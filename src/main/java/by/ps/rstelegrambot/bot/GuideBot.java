@@ -57,7 +57,7 @@ public class GuideBot extends TelegramLongPollingBot {
         }
     }
 
-    private synchronized void sendMsg(String chatId, String text){
+    public synchronized void sendMsg(String chatId, String text){
 
         SendMessage message = new SendMessage();
         message.enableMarkdown(true);

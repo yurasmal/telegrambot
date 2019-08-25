@@ -3,7 +3,6 @@ package by.ps.rstelegrambot.controller;
 import by.ps.rstelegrambot.entity.City;
 import by.ps.rstelegrambot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -49,27 +48,27 @@ public class CityRestController {
     @RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<City> saveCity(@RequestBody City city) {
 
-        HttpHeaders headers = new HttpHeaders();
+        //HttpHeaders headers = new HttpHeaders();
 
         if (city == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         this.cityService.save(city);
-        return new ResponseEntity<>(city, headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(city, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<City> updateCity(@RequestBody City city) {
 
-        HttpHeaders headers = new HttpHeaders();
+        //HttpHeaders headers = new HttpHeaders();
 
         if (city == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         this.cityService.save(city);
-        return new ResponseEntity<>(city, headers, HttpStatus.OK);
+        return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
