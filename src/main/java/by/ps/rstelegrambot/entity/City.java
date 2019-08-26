@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cities")
 @Data
-@AllArgsConstructor
 public class City {
 
     @Id
