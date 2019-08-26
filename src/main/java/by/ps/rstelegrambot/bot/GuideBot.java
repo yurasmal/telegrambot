@@ -51,8 +51,13 @@ public class GuideBot extends TelegramLongPollingBot {
 
         if (message != null && message.hasText()) {
             String chatId = update.getMessage().getChatId().toString();
-            String city = update.getMessage().getText();
-            String text = this.serverResponse.getResponse(apiUrlPrefix + city);
+            String msg = update.getMessage().getText();
+
+            if (msg.equals("/start")) {
+                sendMsg(chatId, "Hello! Please enter the city name in chat " +
+                        "For example: \"Moscow\" or \"London\"");
+            }
+            String text = this.serverResponse.getResponse(apiUrlPrefix + msg);
             sendMsg(chatId, text);
         }
     }

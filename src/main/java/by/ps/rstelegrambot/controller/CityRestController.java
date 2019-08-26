@@ -48,8 +48,6 @@ public class CityRestController {
     @RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<City> saveCity(@RequestBody City city) {
 
-        //HttpHeaders headers = new HttpHeaders();
-
         if (city == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -60,8 +58,6 @@ public class CityRestController {
 
     @RequestMapping(value = "", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<City> updateCity(@RequestBody City city) {
-
-        //HttpHeaders headers = new HttpHeaders();
 
         if (city == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
