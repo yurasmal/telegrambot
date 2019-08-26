@@ -1,5 +1,6 @@
 package by.ps.rstelegrambot.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cities")
 @Data
+@AllArgsConstructor
 public class City {
 
     @Id
