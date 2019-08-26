@@ -30,9 +30,9 @@ public class GuideBot extends TelegramLongPollingBot {
     @Autowired
     ServerResponse serverResponse;
 
-    static {
-        ApiContextInitializer.init();
-    }
+//    static {
+//        ApiContextInitializer.init();
+//    }
 
     @PostConstruct
     public void initBot() {
