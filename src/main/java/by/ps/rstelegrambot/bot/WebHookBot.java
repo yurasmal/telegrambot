@@ -9,6 +9,7 @@ import org.telegram.telegrambots.api.methods.BotApiMethod;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
 import javax.annotation.PostConstruct;
@@ -44,7 +45,8 @@ public class WebHookBot extends TelegramWebhookBot {
 
         if (update.hasMessage() && update.getMessage().hasText()) {
             SendMessage sendMessage = new SendMessage();
-            sendMessage.setChatId(update.getMessage().getChatId().toString());
+            //sendMessage.setChatId(update.getMessage().getChatId().toString());
+            String chatId = update.getMessage().getChatId().toString();
 
             String msg = update.getMessage().getText();
 
@@ -55,9 +57,20 @@ public class WebHookBot extends TelegramWebhookBot {
                 String text = this.serverResponse.getResponse(apiUrlPrefix + msg);
                 sendMessage.setText(text);
             }
+
+            try {
+                execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
             return sendMessage;
         }
         return null;
+    }
+
+    public synchronized void sendMsg(String chatId, String text) {
+
     }
 
     @Override
@@ -72,7 +85,6 @@ public class WebHookBot extends TelegramWebhookBot {
 
     @Override
     public String getBotPath() {
-        return "https://api.telegram.org/bot644363276:AAEoo14lQkNJ1goND-tC14WpPXhNgmLl4qA/" +
-                "setWebhook?url=https://guidetelegrambot.herokuapp.com/api/v1/cities?name=";
+        return null;
     }
 }
