@@ -45,7 +45,7 @@ public class WebHookBot extends TelegramWebhookBot {
 
         if (update.hasMessage() && update.getMessage().hasText()) {
             SendMessage sendMessage = new SendMessage();
-            //sendMessage.setChatId(update.getMessage().getChatId().toString());
+            sendMessage.setChatId(update.getMessage().getChatId().toString());
             String chatId = update.getMessage().getChatId().toString();
 
             String msg = update.getMessage().getText();
@@ -58,11 +58,11 @@ public class WebHookBot extends TelegramWebhookBot {
                 sendMessage.setText(text);
             }
 
-            try {
-                execute(sendMessage);
-            } catch (TelegramApiException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                execute(sendMessage);
+//            } catch (TelegramApiException e) {
+//                e.printStackTrace();
+//            }
 
             return sendMessage;
         }
