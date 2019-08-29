@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
 
 @Component
 @PropertySource("classpath:bot.properties")
-public class WebHookBot extends TelegramWebhookBot {
+public class GuideWebHookBot extends TelegramWebhookBot {
 
     @Value("${bot.username}")
     private String botUsername;
@@ -85,6 +85,6 @@ public class WebHookBot extends TelegramWebhookBot {
 
     @Override
     public String getBotPath() {
-        return "https://guidetelegrambot.herokuapp.com/";
+        return "https://guidetelegrambot.herokuapp.com";
     }
 }
