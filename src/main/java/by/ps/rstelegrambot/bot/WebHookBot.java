@@ -85,6 +85,6 @@ public class WebHookBot extends TelegramWebhookBot {
 
     @Override
     public String getBotPath() {
-        return null;
+        return "https://guidetelegrambot.herokuapp.com";
     }
 }
