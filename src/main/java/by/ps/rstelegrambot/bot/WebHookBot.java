@@ -58,11 +58,11 @@ public class WebHookBot extends TelegramWebhookBot {
                 sendMessage.setText(text);
             }
 
-//            try {
-//                execute(sendMessage);
-//            } catch (TelegramApiException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
 
             return sendMessage;
         }
