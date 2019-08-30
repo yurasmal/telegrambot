@@ -14,65 +14,65 @@ import java.net.URL;
 @Component
 public class JsonResponseParser implements ServerResponse {
 
-    @Autowired
-    CityService cityService;
-
+//    @Autowired
+//    CityService cityService;
+//
 //    @Override
-//    public String getResponse(String apiUrl){
+//    public String getResponse(String cityName) {
 //
-//        try {
-//            URL url = new URL(apiUrl);
-//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//            connection.setRequestMethod("GET");
+//        City city = cityService.findByCityName(cityName);
 //
-//            if (connection.getResponseCode() == 404) {
-//                return "City not found, try another one!";
-//            }
-//
-//            String text = readData(connection);
-//            String response = parseJsonData(text);
-//
-//            return response;
-//
-//        } catch (IOException e){
-//            e.printStackTrace();
-//            return "The service is not available, try again later!";
+//        if (city == null) {
+//            return "City not found, try another one!";
 //        }
+//
+//        return city.getMessage();
 //    }
-
 
     @Override
-    public String getResponse(String cityName) {
+    public String getResponse(String apiUrl){
 
-        City city = cityService.findByCityName(cityName);
+        try {
+            URL url = new URL(apiUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
 
-        if (city == null) {
-            return "City not found, try another one!";
+            if (connection.getResponseCode() == 404) {
+                return "City not found, try another one!";
+            }
+
+            String text = readData(connection);
+            String response = parseJsonData(text);
+
+            return response;
+
+        } catch (IOException e){
+            e.printStackTrace();
+            return "The service is not available, try again later!";
         }
 
-        return city.getMessage();
     }
 
-//    private String readData(HttpURLConnection connection) throws IOException {
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//
-//        String input;
-//        StringBuffer response = new StringBuffer();
-//
-//        while ((input = reader.readLine()) != null) {
-//            response.append(input);
-//        }
-//        reader.close();
-//
-//        return response.toString();
-//    }
-//
-//    private String parseJsonData(String data) throws IOException {
-//
-//        return new ObjectMapper()
-//                    .readTree(data)
-//                    .get("message")
-//                    .toString()
-//                    .replace("\"", "");
-//    }
+    private String readData(HttpURLConnection connection) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+        String input;
+        StringBuffer response = new StringBuffer();
+
+        while ((input = reader.readLine()) != null) {
+            response.append(input);
+        }
+        reader.close();
+
+        return response.toString();
+    }
+
+    private String parseJsonData(String data) throws IOException {
+
+        return new ObjectMapper()
+                    .readTree(data)
+                    .get("message")
+                   .toString()
+                    .replace("\"", "");
+    }
 }

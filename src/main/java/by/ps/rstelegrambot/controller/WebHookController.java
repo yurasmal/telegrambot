@@ -1,7 +1,5 @@
 package by.ps.rstelegrambot.controller;
 
-import by.ps.rstelegrambot.bot.GuideWebHookBot;
-import by.ps.rstelegrambot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
