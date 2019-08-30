@@ -1,5 +1,6 @@
 package by.ps.rstelegrambot.bot;
 
+import by.ps.rstelegrambot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -54,7 +55,8 @@ public class GuideWebHookBot extends TelegramWebhookBot {
                 sendMessage.setText("Hello! Please enter the city name in chat " +
                         "For example: \"Moscow\" or \"London\"");
             } else {
-                String text = this.serverResponse.getResponse(apiUrlPrefix + msg);
+                //String text = this.serverResponse.getResponse(apiUrlPrefix + msg);
+                String text = this.serverResponse.getResponse(msg);
                 sendMessage.setText(text);
             }
 
